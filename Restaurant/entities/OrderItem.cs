@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace Restaurant.Entities
 {
     class OrderItem
@@ -18,6 +20,17 @@ namespace Restaurant.Entities
         public double SubTotal()
         {
             return Price * Quantity;
+        }
+
+        public override string ToString()
+        {
+            return Product.Name
+                + ", $"
+                + Price.ToString("F2", CultureInfo.InvariantCulture)
+                + ", Quantity: "
+                + Quantity
+                + ", Subtotal: $"
+                + SubTotal().ToString("F2", CultureInfo.InvariantCulture);
         }
     }
 }
